@@ -20,7 +20,7 @@ Qayta build qilmasdan takroriy ishga tushirish:
 docker compose up
 ```
 
-## Hakamlar hay’atiga namoyish qilish
+## 
 
 1. Istalgan guruh va ishtirokchini tanlang: markazdagi raqam uning net-balansini ko‘rsatadi.
 2. Minimal o‘tkazmalar ro‘yxati hamda exact/greedy taqqoslash hisoblagichini ko‘rsating.
@@ -31,7 +31,7 @@ docker compose up
 
 MVPda ro‘yxatdan o‘tish o‘rniga foydalanuvchi dinamik ro‘yxatdan tanlanadi. Hech bir ID, guruh hajmi yoki summa kodga hardcode qilinmagan.
 
-## CSV shartnomasi
+## 
 
 Asl o‘zbekcha ustun nomlariga ega aynan `groups.csv`, `members.csv`, `expenses.csv`, `expense_shares.csv`, `settlements.csv` fayllari kutiladi. Import atomar bajariladi: avval aniq ustunlar, bo‘sh qiymatlar, barcha PK/bog‘lanishlar, ulush guruhining xarajat guruhiga mosligi, `BIGINT` diapazoni, valyuta, usullar, statuslar, flaglar va xarajat ulushlari yig‘indisi tekshiriladi; faqat shundan keyin joriy dataset almashtiriladi.
 
