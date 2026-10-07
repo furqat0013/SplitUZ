@@ -1,0 +1,2 @@
+"""SplitUZ application package."""
+

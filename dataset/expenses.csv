@@ -1,0 +1,3 @@
+﻿expense_id,group_id,tolagan_member_id,summa,valyuta,kategoriya,izoh,bolish_usuli,sana,ochirilgan
+E001,G0001,U001,120000,UZS,oziq-ovqat,Demo xarajat 1,teng,2026-09-02 12:00:00,yo'q
+E002,G0001,U002,80000,UZS,transport,Demo xarajat 2,aniq,2026-09-03 12:00:00,yo'q

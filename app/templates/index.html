@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SplitUZ — точный расчёт и минимизация групповых долгов">
+  <title>SplitUZ — долги без хаоса</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">S</span> SplitUZ</a>
+    <div class="top-actions">
+      <button class="quiet" id="import-open" type="button" data-i18n="import">Импорт CSV</button>
+      <a class="quiet" href="/api/export" data-i18n="export">Скачать результат</a>
+      <button class="lang" id="lang" type="button">UZ</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="identity panel">
+      <label><span data-i18n="group">Группа</span><select id="group">{% for group in groups %}<option value="{{ group.id }}">{{ group.name }} · {{ group.id }}</option>{% endfor %}</select></label>
+      <label><span data-i18n="you">Вы</span><select id="member"></select></label>
+    </section>
+
+    <section class="hero panel">
+      <p class="eyebrow" data-i18n="position">ВАША ПОЗИЦИЯ</p>
+      <div id="balance" class="balance">—</div>
+      <p id="balance-label" class="balance-label" data-i18n="loading">Загрузка…</p>
+      <div class="proof"><span class="proof-dot"></span><span data-i18n="proof">Баланс группы проверен: сумма = 0</span></div>
+    </section>
+
+    <section class="grid">
+      <article class="panel transfers-card">
+        <div class="section-head"><div><p class="eyebrow" data-i18n="smart">УМНОЕ ПОГАШЕНИЕ</p><h2 data-i18n="minimum">Минимум переводов</h2></div><span id="saving" class="pill"></span></div>
+        <div id="transfers" class="transfers"></div>
+      </article>
+
+      <article class="panel add-card">
+        <p class="eyebrow" data-i18n="newExpense">НОВЫЙ РАСХОД</p><h2 data-i18n="addExpense">Добавить расход</h2>
+        <form id="expense-form">
+          <div class="row"><label><span data-i18n="amount">Сумма</span><input id="amount" type="number" min="1" required placeholder="250 000"></label><label><span data-i18n="payer">Кто заплатил</span><select id="payer"></select></label></div>
+          <div class="row"><label><span data-i18n="category">Категория</span><input id="category" required value="restoran"></label><label><span data-i18n="split">Как делим</span><select id="method"><option value="teng" data-i18n="equal">Поровну</option><option value="foiz" data-i18n="percent">По доле, %</option><option value="aniq" data-i18n="exact">Точные суммы</option><option value="pozitsiya" data-i18n="positions">По позициям</option></select></label></div>
+          <label><span data-i18n="note">Комментарий</span><input id="note" placeholder="Ужин команды"></label>
+          <fieldset><legend data-i18n="participants">Участники</legend><div id="participants" class="participants"></div></fieldset>
+          <button class="primary" type="submit" data-i18n="save">Сохранить расход</button>
+          <p id="form-status" class="status"></p>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="qr-dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">DEMO QR</p><h2 data-i18n="scan">Сканировать перевод</h2><img id="qr-image" alt="Demo payment QR"><p id="qr-caption"></p><small data-i18n="demo">Демонстрационный QR, деньги не списываются</small></dialog>
+  <dialog id="import-dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">CSV</p><h2 data-i18n="replace">Заменить датасет</h2><form id="import-form"><input name="files" type="file" accept=".csv" multiple required><p data-i18n="fiveFiles">Выберите ровно 5 файлов из нового набора</p><button class="primary" data-i18n="import">Импорт CSV</button><p id="import-status" class="status"></p></form></dialog>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+
